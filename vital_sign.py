@@ -7,5 +7,10 @@ class VitalSign:
         self.blood_pressure = blood_pressure
         self.oxygen = oxygen
 
-    def __str__(self):
-        return f"[{self.timestamp}] FC: {self.heart_rate} bpm | PA: {self.blood_pressure} | SpO2: {self.oxygen}%"
+    def get_health_status(self):
+        """Calcula el estado y color de alerta según los signos."""
+        if self.heart_rate > 100 or self.oxygen < 90:
+            return "Crítico", "#FF4B4B" # Rojo
+        if self.heart_rate > 90 or self.oxygen < 94:
+            return "Riesgo", "#FFA500"  # Naranja
+        return "Estable", "#28A745"      # Verde
